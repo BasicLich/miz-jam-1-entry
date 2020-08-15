@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Art/monochrome_transparent.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
-[ext_resource path="res://Gun.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Weapon.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.21127
@@ -26,4 +26,5 @@ smoothing_enabled = true
 shape = SubResource( 1 )
 
 [node name="Weapon" parent="." instance=ExtResource( 3 )]
+type = 1
 fireInterval = 0.2

@@ -2,16 +2,27 @@ extends Node2D
 
 class_name Weapon
 
+enum WeaponType {GUN, SHOTGUN, SUBMACHINE_GUN}
+
 var projectileClass := preload("res://Projectile.tscn")
 
+#TODO: Dict {WeaponType => interval}
+export var type := WeaponType.GUN
 export var fireInterval := 1.0
 var fireIntervalCounter := 0.0
 
 var aim = Common.STRAIGHT setget set_aim, get_aim
 var dir = Common.LEFT setget set_dir, get_dir
 
+var rnd := RandomNumberGenerator.new()
+
 func _ready():
 	set_process(true)
+
+func _enter_tree():
+	rnd.randomize()
+	$GunSprite.visible     = type == WeaponType.GUN
+	$ShotgunSprite.visible = type == WeaponType.SHOTGUN
 
 func set_aim(aAim):
 	aim = aAim
@@ -57,11 +68,19 @@ func _updateWeapon():
 func shoot():
 	if fireIntervalCounter == fireInterval:
 		fireIntervalCounter = 0.0
-		var projectile := projectileClass.instance() as Projectile
-		var pp := $ProjectilePos as Node2D
-		
-		projectile.transform = pp.get_global_transform()
-		
-		get_tree().root.add_child(projectile)
+		if type == WeaponType.GUN:
+			var projectile := projectileClass.instance() as Projectile
+			var pp := $ProjectilePos as Node2D
+			projectile.transform = pp.get_global_transform()
+			get_tree().root.add_child(projectile)
+			
+		elif type == WeaponType.SHOTGUN:
+			for i in range(1, 5):
+				var spread := rnd.randf_range(-5, 5)
+				var projectile := projectileClass.instance() as Projectile
+				var pp := $ProjectilePos as Node2D
+				projectile.transform = pp.get_global_transform()
+				projectile.rotation_degrees += spread
+				get_tree().root.add_child(projectile)
 
 		#print_debug("Bang!")

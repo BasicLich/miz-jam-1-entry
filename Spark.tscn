@@ -46,8 +46,6 @@ tracks/2/keys = {
 }
 
 [node name="Spark" type="Sprite"]
-modulate = Color( 1, 1, 1, 0 )
-scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 527, 204, 16, 16 )
