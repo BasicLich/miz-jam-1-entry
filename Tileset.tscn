@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Art/monochrome_transparent.png" type="Texture" id=1]
+[ext_resource path="res://ColTile16x16.tres" type="Shape2D" id=2]
+
+[node name="Tileset" type="Node"]
+
+[node name="BrickPlatformTopLeft" type="Sprite" parent="."]
+modulate = Color( 0.811765, 0.768627, 0.721569, 1 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 306, 0, 16, 16 )
+
+[node name="StaticBody" type="StaticBody2D" parent="BrickPlatformTopLeft"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BrickPlatformTopLeft/StaticBody"]
+shape = ExtResource( 2 )
+
+[node name="BrickPlatformTopRight" type="Sprite" parent="."]
+modulate = Color( 0.811765, 0.768627, 0.721569, 1 )
+position = Vector2( 64, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 340, 0, 16, 16 )
+
+[node name="StaticBody" type="StaticBody2D" parent="BrickPlatformTopRight"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BrickPlatformTopRight/StaticBody"]
+shape = ExtResource( 2 )
+
+[node name="BrickPlatformTop" type="Sprite" parent="."]
+modulate = Color( 0.811765, 0.768627, 0.721569, 1 )
+position = Vector2( 32, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 323, 0, 16, 16 )
+
+[node name="StaticBody" type="StaticBody2D" parent="BrickPlatformTop"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BrickPlatformTop/StaticBody"]
+shape = ExtResource( 2 )
