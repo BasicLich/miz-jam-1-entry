@@ -26,3 +26,4 @@ smoothing_enabled = true
 shape = SubResource( 1 )
 
 [node name="Weapon" parent="." instance=ExtResource( 3 )]
+fireInterval = 0.2

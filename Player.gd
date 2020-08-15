@@ -21,5 +21,5 @@ func _process(delta):
 	if Input.is_action_just_pressed("player_jump"):
 		jump()
 	
-	if Input.is_action_just_pressed("player_shoot"):
+	if Input.is_action_pressed("player_shoot"):
 		shoot()

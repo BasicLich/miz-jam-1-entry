@@ -36,7 +36,6 @@ func _physics_process(delta):
 	move_and_slide(vel, Vector2(0, -1))
 	onFloor = is_on_floor()
 
-
 func _changeWeaponDirection(dir):
 	var w := $Weapon as Node2D
 	if w == null:
@@ -56,7 +55,7 @@ func jump():
 		onFloor = false
 		
 func shoot():
-	var w := $Weapon as Node2D
+	var w := $Weapon as Weapon
 	if w == null:
 		return
 	

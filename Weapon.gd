@@ -1,10 +1,17 @@
 extends Node2D
 
+class_name Weapon
+
+var projectileClass := preload("res://Projectile.tscn")
+
+export var fireInterval := 1.0
+var fireIntervalCounter := 0.0
+
 var aim = Common.STRAIGHT setget set_aim, get_aim
 var dir = Common.LEFT setget set_dir, get_dir
 
 func _ready():
-	pass
+	set_process(true)
 
 func set_aim(aAim):
 	aim = aAim
@@ -19,6 +26,11 @@ func set_dir(aDir):
 
 func get_dir():
 	return dir
+
+func _process(delta):
+	fireIntervalCounter = fireIntervalCounter + delta
+	if fireIntervalCounter >= fireInterval:
+		fireIntervalCounter = fireInterval
 
 func _updateWeapon():
 	if aim == Common.STRAIGHT:
@@ -43,4 +55,13 @@ func _updateWeapon():
 			scale.x = 1
 
 func shoot():
-	print_debug("Bang!")
+	if fireIntervalCounter == fireInterval:
+		fireIntervalCounter = 0.0
+		var projectile := projectileClass.instance() as Projectile
+		var pp := $ProjectilePos as Node2D
+		
+		projectile.transform = pp.get_global_transform()
+		
+		get_tree().root.add_child(projectile)
+
+		#print_debug("Bang!")

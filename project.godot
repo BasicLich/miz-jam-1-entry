@@ -18,10 +18,22 @@ _global_script_classes=[ {
 "class": "Common",
 "language": "GDScript",
 "path": "res://Common.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Projectile",
+"language": "GDScript",
+"path": "res://Projectile.gd"
+}, {
+"base": "Node2D",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://Weapon.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
-"Common": ""
+"Common": "",
+"Projectile": "",
+"Weapon": ""
 }
 
 [application]

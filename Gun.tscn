@@ -11,3 +11,6 @@ position = Vector2( 7.86615, 0.749146 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 629, 153, 16, 16 )
+
+[node name="ProjectilePos" type="Node2D" parent="."]
+position = Vector2( 14.5158, -0.75 )
