@@ -20,3 +20,9 @@ position = Vector2( 7.01725, 1.17984 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 663, 153, 16, 16 )
+
+[node name="SubmachineSprite" type="Sprite" parent="."]
+position = Vector2( 6.87461, 1.64897 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 697, 153, 16, 16 )

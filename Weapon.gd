@@ -8,8 +8,13 @@ var projectileClass := preload("res://Projectile.tscn")
 
 #TODO: Dict {WeaponType => interval}
 export var type := WeaponType.GUN
-export var fireInterval := 1.0
 var fireIntervalCounter := 0.0
+
+var intervals := {
+	WeaponType.GUN: 0.2,
+	WeaponType.SHOTGUN: 0.8,
+	WeaponType.SUBMACHINE_GUN: 0.05
+}
 
 var aim = Common.STRAIGHT setget set_aim, get_aim
 var dir = Common.LEFT setget set_dir, get_dir
@@ -21,8 +26,9 @@ func _ready():
 
 func _enter_tree():
 	rnd.randomize()
-	$GunSprite.visible     = type == WeaponType.GUN
-	$ShotgunSprite.visible = type == WeaponType.SHOTGUN
+	$GunSprite.visible        = type == WeaponType.GUN
+	$ShotgunSprite.visible    = type == WeaponType.SHOTGUN
+	$SubmachineSprite.visible = type == WeaponType.SUBMACHINE_GUN
 
 func set_aim(aAim):
 	aim = aAim
@@ -40,6 +46,7 @@ func get_dir():
 
 func _process(delta):
 	fireIntervalCounter = fireIntervalCounter + delta
+	var fireInterval := intervals[type] as float
 	if fireIntervalCounter >= fireInterval:
 		fireIntervalCounter = fireInterval
 
@@ -66,12 +73,19 @@ func _updateWeapon():
 			scale.x = 1
 
 func shoot():
+	var fireInterval := intervals[type] as float
 	if fireIntervalCounter == fireInterval:
 		fireIntervalCounter = 0.0
-		if type == WeaponType.GUN:
+		if type == WeaponType.GUN or type == WeaponType.SUBMACHINE_GUN:
+			var spread := 0.0
+			if type == WeaponType.GUN:
+				spread = rnd.randf_range(-2, 2)
+			elif type == WeaponType.SUBMACHINE_GUN:
+				spread = rnd.randf_range(-7, 7)
 			var projectile := projectileClass.instance() as Projectile
 			var pp := $ProjectilePos as Node2D
 			projectile.transform = pp.get_global_transform()
+			projectile.rotation_degrees += spread
 			get_tree().root.add_child(projectile)
 			
 		elif type == WeaponType.SHOTGUN:
