@@ -6,7 +6,6 @@ enum WeaponType {GUN, SHOTGUN, SUBMACHINE_GUN}
 
 var projectileClass := preload("res://Projectile.tscn")
 
-#TODO: Dict {WeaponType => interval}
 export var type := WeaponType.GUN
 var fireIntervalCounter := 0.0
 
@@ -26,9 +25,13 @@ func _ready():
 
 func _enter_tree():
 	rnd.randomize()
-	$GunSprite.visible        = type == WeaponType.GUN
-	$ShotgunSprite.visible    = type == WeaponType.SHOTGUN
-	$SubmachineSprite.visible = type == WeaponType.SUBMACHINE_GUN
+	switchWeapon(type)
+
+func switchWeapon(aType):
+	type = aType
+	$GunSprite.visible        = aType == WeaponType.GUN
+	$ShotgunSprite.visible    = aType == WeaponType.SHOTGUN
+	$SubmachineSprite.visible = aType == WeaponType.SUBMACHINE_GUN
 
 func set_aim(aAim):
 	aim = aAim

@@ -4,12 +4,17 @@ class_name Actor
 
 const GRAVITY := Vector2(0, 350)
 
-export var moveSpeed := 1.0
-export var initialJumpVel := 1.0
+var moveSpeed := 1.0
+var initialJumpVel := 1.0
 
 var vel := Vector2(0, 0)
 var onFloor := false
 var movement := Common.STAY
+var weapons := [
+	Weapon.WeaponType.GUN,
+	Weapon.WeaponType.SHOTGUN,
+	Weapon.WeaponType.SUBMACHINE_GUN
+]
 
 func _ready():
 	set_physics_process(true)
@@ -60,3 +65,23 @@ func shoot():
 		return
 	
 	w.shoot()
+
+func _findWeapon(current, d: int):
+	var i := weapons.find(current) + d
+	if i > weapons.size() - 1:
+		i = 0
+	elif i < 0:
+		i = weapons.back()
+	return weapons[i]
+
+func nextWeapon():
+	var w := $Weapon as Weapon
+	if w == null:
+		return
+	w.switchWeapon(_findWeapon(w.type, +1))
+	
+func prevWeapon():
+	var w := $Weapon as Weapon
+	if w == null:
+		return
+	w.switchWeapon(_findWeapon(w.type, -1))

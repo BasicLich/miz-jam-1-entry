@@ -3,6 +3,10 @@ extends Actor
 func _ready():
 	set_process(true)
 
+func _enter_tree():
+	moveSpeed = 180.0
+	initialJumpVel = 200.0
+
 func _process(delta):
 	if Input.is_action_pressed("player_left"):
 		movement = Common.LEFT
@@ -23,3 +27,9 @@ func _process(delta):
 	
 	if Input.is_action_pressed("player_shoot"):
 		shoot()
+		
+	if Input.is_action_just_pressed("player_next_weapon"):
+		nextWeapon()
+		
+	if Input.is_action_just_pressed("player_prev_weapon"):
+		prevWeapon()
