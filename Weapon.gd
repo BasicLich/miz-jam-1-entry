@@ -75,7 +75,7 @@ func _updateWeapon():
 			rotation_degrees = 90
 			scale.x = 1
 
-func shoot():
+func shoot(team: String):
 	var fireInterval := intervals[type] as float
 	if fireIntervalCounter == fireInterval:
 		fireIntervalCounter = 0.0
@@ -89,6 +89,7 @@ func shoot():
 			var pp := $ProjectilePos as Node2D
 			projectile.transform = pp.get_global_transform()
 			projectile.rotation_degrees += spread
+			projectile.add_to_group(team)
 			get_tree().root.add_child(projectile)
 			
 		elif type == WeaponType.SHOTGUN:
@@ -98,6 +99,7 @@ func shoot():
 				var pp := $ProjectilePos as Node2D
 				projectile.transform = pp.get_global_transform()
 				projectile.rotation_degrees += spread
+				projectile.add_to_group(team)
 				get_tree().root.add_child(projectile)
 
 		#print_debug("Bang!")

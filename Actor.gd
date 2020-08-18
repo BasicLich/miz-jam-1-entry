@@ -16,8 +16,11 @@ var weapons := [
 	Weapon.WeaponType.SUBMACHINE_GUN
 ]
 
+var w: Weapon
+
 func _ready():
 	set_physics_process(true)
+	w = $Weapon
 
 func _physics_process(delta):
 	var moveControl := 1.0
@@ -42,16 +45,9 @@ func _physics_process(delta):
 	onFloor = is_on_floor()
 
 func _changeWeaponDirection(dir):
-	var w := $Weapon as Node2D
-	if w == null:
-		return
-
 	w.dir = dir
 
 func setAim(aim):
-	var w := $Weapon as Node2D
-	if w == null:
-		return
 	w.aim = aim
 
 func jump():
@@ -59,12 +55,8 @@ func jump():
 		vel.y = -initialJumpVel
 		onFloor = false
 		
-func shoot():
-	var w := $Weapon as Weapon
-	if w == null:
-		return
-	
-	w.shoot()
+func shoot(team: String):
+	w.shoot(team)
 
 func _findWeapon(current, d: int):
 	var i := weapons.find(current) + d
@@ -75,13 +67,7 @@ func _findWeapon(current, d: int):
 	return weapons[i]
 
 func nextWeapon():
-	var w := $Weapon as Weapon
-	if w == null:
-		return
 	w.switchWeapon(_findWeapon(w.type, +1))
 	
 func prevWeapon():
-	var w := $Weapon as Weapon
-	if w == null:
-		return
 	w.switchWeapon(_findWeapon(w.type, -1))

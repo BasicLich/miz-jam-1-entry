@@ -1,5 +1,7 @@
 extends Actor
 
+const TEAM = "Player"
+
 func _ready():
 	set_process(true)
 
@@ -26,8 +28,8 @@ func _process(delta):
 		jump()
 	
 	if Input.is_action_pressed("player_shoot"):
-		shoot()
-		
+		shoot(TEAM)
+
 	if Input.is_action_just_pressed("player_next_weapon"):
 		nextWeapon()
 		

@@ -20,3 +20,8 @@ data_*/
 #VSCode
 
 .vscode/
+
+
+# Other
+*.odt
+*.odt#
