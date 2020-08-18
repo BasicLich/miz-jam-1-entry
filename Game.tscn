@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Guy.tscn" type="PackedScene" id=3]
 
 [node name="Game" type="Node"]
 
@@ -23,3 +24,9 @@ text = "Shooty game
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Guy1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 584.66, 114.796 )
+
+[node name="Guy2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 566.16, 198.886 )
