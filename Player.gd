@@ -7,6 +7,7 @@ const TEAM_PROJECTILE := TEAM + "Projectile"
 
 func _ready():
 	set_process(true)
+	_updateHealth()
 
 func _enter_tree():
 	add_to_group(TEAM)
@@ -39,3 +40,11 @@ func _process(delta):
 		
 	if Input.is_action_just_pressed("player_prev_weapon"):
 		prevWeapon()
+
+func _updateHealth():
+	var pg := $"../UI/PlayerHealth" as ProgressBar
+	pg.value = health
+
+func takeDamage(value: int):
+	.takeDamage(value)
+	_updateHealth()

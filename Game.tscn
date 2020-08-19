@@ -25,6 +25,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PlayerHealth" type="ProgressBar" parent="UI"]
+margin_left = 4.0
+margin_top = 21.0
+margin_right = 95.0
+margin_bottom = 35.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Guy1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 584.66, 114.796 )
 

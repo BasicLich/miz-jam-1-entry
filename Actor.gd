@@ -7,6 +7,9 @@ const GRAVITY := Vector2(0, 350)
 var moveSpeed := 1.0
 var initialJumpVel := 1.0
 
+var maxHealth := 100
+var health := 100
+
 var vel := Vector2(0, 0)
 var onFloor := false
 var movement := Common.STAY
@@ -71,3 +74,6 @@ func nextWeapon():
 	
 func prevWeapon():
 	w.switchWeapon(_findWeapon(w.type, -1))
+
+func takeDamage(value: int):
+	health = max(0, health - value)
