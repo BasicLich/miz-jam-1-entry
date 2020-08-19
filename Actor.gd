@@ -40,8 +40,8 @@ func _physics_process(delta):
 		vel.x = vel.x * delta
 
 	vel = vel + GRAVITY * delta
-	
-	move_and_slide(vel, Vector2(0, -1))
+
+	vel = move_and_slide(vel, Vector2(0, -1))
 	onFloor = is_on_floor()
 
 func _changeWeaponDirection(dir):
