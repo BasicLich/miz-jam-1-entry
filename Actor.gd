@@ -35,7 +35,6 @@ func _physics_process(delta):
 		vel.y = 0
 	if isDead():
 		_runDeadAnimation()
-	
 	if movement == Common.LEFT:
 		if vel.x > 0:
 			moveControl = 3.7
@@ -48,6 +47,12 @@ func _physics_process(delta):
 		_changeWeaponDirection(movement)
 	elif onFloor:
 		vel.x = vel.x * delta
+
+	if not isDead():
+		if movement != Common.STAY and not ap.is_playing():
+			ap.play("Walk")
+		elif movement == Common.STAY and ap.is_playing():
+			ap.stop()
 
 	vel = vel + GRAVITY * delta
 
