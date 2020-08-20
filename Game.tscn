@@ -1,15 +1,51 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
+[ext_resource path="res://UserInterface.gd" type="Script" id=2]
+[ext_resource path="res://PressStart2PFont.tres" type="DynamicFont" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "GameOver"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("GameOver:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.8, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 452.577, 627.43 ), Vector2( 452.577, 282.83 ), Vector2( 452.577, 308.228 ), Vector2( 452.577, 282.83 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Reset"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("GameOver:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 452.577, 627.43 ) ]
+}
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
 
 [node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="UI"]
 margin_right = 40.0
 margin_bottom = 14.0
+custom_fonts/font = ExtResource( 3 )
 text = "Shooty game
 "
 __meta__ = {
@@ -17,10 +53,29 @@ __meta__ = {
 }
 
 [node name="PlayerHealth" type="ProgressBar" parent="UI"]
-margin_left = 4.0
-margin_top = 21.0
-margin_right = 95.0
-margin_bottom = 35.0
+margin_left = 5.41422
+margin_top = 25.2426
+margin_right = 178.414
+margin_bottom = 56.2426
+custom_fonts/font = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="GameOver" type="Label" parent="UI"]
+margin_left = 452.577
+margin_top = 627.43
+margin_right = 585.577
+margin_bottom = 675.431
+custom_fonts/font = ExtResource( 3 )
+text = "You died!
+
+Press F1 to try again!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI"]
+anims/GameOver = SubResource( 1 )
+anims/Reset = SubResource( 2 )

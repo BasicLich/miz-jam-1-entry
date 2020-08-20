@@ -6,9 +6,11 @@ const TEAM := "Player"
 const TEAM_PROJECTILE := TEAM + "Projectile"
 
 onready var globalState = $"/root/GlobalState"
+onready var ui := $"/root/Game/UI" as UserInterface
 
 func _ready():
 	set_process(true)
+	setInitialHealth(100)
 	_updateHealth()
 
 func _enter_tree():
@@ -17,6 +19,9 @@ func _enter_tree():
 	initialJumpVel = 200.0
 
 func _process(delta):
+	if isDead():
+		return
+
 	if Input.is_action_pressed("player_left"):
 		movement = Common.LEFT
 	elif Input.is_action_pressed("player_right"):
@@ -44,12 +49,11 @@ func _process(delta):
 		prevWeapon()
 
 func _updateHealth():
-	var pg := $"../../UI/PlayerHealth" as ProgressBar
-	pg.value = health
+	ui.setHealth(health, maxHealth)
 
 func takeDamage(value: int):
 	.takeDamage(value)
 	_updateHealth()
 	
 	if health == 0:
-		globalState.reset()
+		globalState.gameOver()

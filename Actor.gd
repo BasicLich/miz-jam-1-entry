@@ -9,6 +9,7 @@ var initialJumpVel := 1.0
 
 var maxHealth := 100
 var health := 100
+var deadAnimationNeeded = true
 
 var vel := Vector2(0, 0)
 var onFloor := false
@@ -21,13 +22,19 @@ var weapons := [
 
 onready var w := $Weapon as Weapon
 
+var rng = RandomNumberGenerator.new()
+
 func _ready():
+	rng.randomize()
 	set_physics_process(true)
 
 func _physics_process(delta):
 	var moveControl := 1.0
 	if onFloor:
 		vel.y = 0
+	if isDead():
+		_runDeadAnimation()
+	
 	if movement == Common.LEFT:
 		if vel.x > 0:
 			moveControl = 3.7
@@ -74,5 +81,20 @@ func nextWeapon():
 func prevWeapon():
 	w.switchWeapon(_findWeapon(w.type, -1))
 
+func setInitialHealth(value: int):
+	health = value
+	maxHealth = value
+
 func takeDamage(value: int):
 	health = max(0, health - value)
+	
+func isDead() -> bool:
+	return health == 0
+	
+func _runDeadAnimation():
+	if deadAnimationNeeded:
+		deadAnimationNeeded = false
+		onFloor = false
+		vel = Vector2(rng.randf_range(-3, 3) * 25, -150)
+		movement = Common.STAY
+		w.hide()

@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Weapon
 
+const SHOTGUN_SPREAD = 15
+
 enum WeaponType {GUN, SHOTGUN, SUBMACHINE_GUN}
 
 var projectileClass := preload("res://Projectile.tscn")
@@ -94,7 +96,7 @@ func shoot(team: String):
 			
 		elif type == WeaponType.SHOTGUN:
 			for i in range(1, 5):
-				var spread := rnd.randf_range(-5, 5)
+				var spread := rnd.randf_range(-SHOTGUN_SPREAD, SHOTGUN_SPREAD)
 				var projectile := projectileClass.instance() as Projectile
 				var pp := $ProjectilePos as Node2D
 				projectile.transform = pp.get_global_transform()

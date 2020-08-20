@@ -12,6 +12,7 @@ var target: Node2D
 
 func _ready():
 	rnd.randomize()
+	setInitialHealth(80)
 	set_process(true)
 
 func _enter_tree():
@@ -20,6 +21,9 @@ func _enter_tree():
 	initialJumpVel = 50.0
 
 func _process(delta):
+	if isDead():
+		return
+
 	if target == null:
 		movement = Common.STAY
 	else:
