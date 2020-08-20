@@ -10,7 +10,7 @@ onready var ui := $"/root/Game/UI" as UserInterface
 
 func _ready():
 	set_process(true)
-	setInitialHealth(100)
+	setInitialHealth(130)
 	_updateHealth()
 
 func _enter_tree():

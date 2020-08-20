@@ -3,6 +3,9 @@ extends Node2D
 class_name Weapon
 
 const SHOTGUN_SPREAD = 15
+const SHOTGUN_DAMAGE = 32
+const GUN_DAMAGE = 14
+const SUBMACHINE_GUN_DAMAGE = 8
 
 enum WeaponType {GUN, SHOTGUN, SUBMACHINE_GUN}
 
@@ -88,6 +91,11 @@ func shoot(team: String):
 			elif type == WeaponType.SUBMACHINE_GUN:
 				spread = rnd.randf_range(-7, 7)
 			var projectile := projectileClass.instance() as Projectile
+			projectile.team = team
+			if type == WeaponType.GUN:
+				projectile.damage = GUN_DAMAGE
+			else:
+				projectile.damage = SUBMACHINE_GUN_DAMAGE
 			var pp := $ProjectilePos as Node2D
 			projectile.transform = pp.get_global_transform()
 			projectile.rotation_degrees += spread
@@ -98,6 +106,8 @@ func shoot(team: String):
 			for i in range(1, 5):
 				var spread := rnd.randf_range(-SHOTGUN_SPREAD, SHOTGUN_SPREAD)
 				var projectile := projectileClass.instance() as Projectile
+				projectile.team = team
+				projectile.damage = SHOTGUN_DAMAGE
 				var pp := $ProjectilePos as Node2D
 				projectile.transform = pp.get_global_transform()
 				projectile.rotation_degrees += spread
