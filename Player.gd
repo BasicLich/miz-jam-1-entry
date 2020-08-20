@@ -5,6 +5,8 @@ class_name Player
 const TEAM := "Player"
 const TEAM_PROJECTILE := TEAM + "Projectile"
 
+onready var globalState = $"/root/GlobalState"
+
 func _ready():
 	set_process(true)
 	_updateHealth()
@@ -42,9 +44,12 @@ func _process(delta):
 		prevWeapon()
 
 func _updateHealth():
-	var pg := $"../UI/PlayerHealth" as ProgressBar
+	var pg := $"../../UI/PlayerHealth" as ProgressBar
 	pg.value = health
 
 func takeDamage(value: int):
 	.takeDamage(value)
 	_updateHealth()
+	
+	if health == 0:
+		globalState.reset()

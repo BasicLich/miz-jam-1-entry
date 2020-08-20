@@ -19,11 +19,10 @@ var weapons := [
 	Weapon.WeaponType.SUBMACHINE_GUN
 ]
 
-var w: Weapon
+onready var w := $Weapon as Weapon
 
 func _ready():
 	set_physics_process(true)
-	w = $Weapon
 
 func _physics_process(delta):
 	var moveControl := 1.0

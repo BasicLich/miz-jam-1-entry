@@ -51,6 +51,9 @@ func _process(delta):
 		
 		if needToShoot and rnd.randi_range(0, 1000) < 100:
 			shoot(TEAM_PROJECTILE)
+			
+		if rnd.randi_range(0, 1000) < 10:
+			jump()
 
 func _targetVisible() -> bool:
 	if target != null:
