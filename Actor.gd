@@ -21,6 +21,7 @@ var weapons := [
 ]
 
 onready var w := $Weapon as Weapon
+onready var ap := $AnimationPlayer as AnimationPlayer
 
 var rng = RandomNumberGenerator.new()
 
@@ -97,4 +98,14 @@ func _runDeadAnimation():
 		onFloor = false
 		vel = Vector2(rng.randf_range(-3, 3) * 25, -150)
 		movement = Common.STAY
+		if rng.randi_range(0, 10) > 5:
+			ap.play("Death")
+		else:
+			ap.play("Death2")
 		w.hide()
+		#Ehm... Need to figure ot better way of handling this.
+		set_collision_layer_bit(1, false)
+		set_collision_layer_bit(2, false)
+		set_collision_layer_bit(5, true)
+		set_collision_mask_bit(1, false)
+		set_collision_mask_bit(2, false)
