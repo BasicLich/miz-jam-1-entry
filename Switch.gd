@@ -10,6 +10,10 @@ func _ready():
 func _update():
 	$On.visible = state == Common.ON
 	$Off.visible = state == Common.OFF
+	
+	for child in get_children():
+		if child is Door:
+			child.setState(state)
 
 func toggle():
 	if state == Common.ON:
