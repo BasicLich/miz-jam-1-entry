@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ShotgunGuy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://SubmachineGunGuy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Guy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Switch.tscn" type="PackedScene" id=6]
 
 [node name="Level" type="TileMap"]
 tile_set = ExtResource( 3 )
@@ -44,3 +45,6 @@ position = Vector2( 560.846, 343.342 )
 
 [node name="SMGGuy3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 623.071, 391.425 )
+
+[node name="Switch" parent="." instance=ExtResource( 6 )]
+position = Vector2( 440, 232 )

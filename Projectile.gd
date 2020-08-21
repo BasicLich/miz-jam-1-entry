@@ -24,6 +24,10 @@ func _physics_process(delta):
 		
 		if not col.collider.is_in_group(team):
 			needToDestroy = true
+			
+		if col.collider is Switch:
+			needToDestroy = true
+			col.collider.toggle()
 		
 		if needToDestroy:
 			var s := sparkClass.instance() as Sprite
