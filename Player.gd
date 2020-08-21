@@ -57,3 +57,8 @@ func takeDamage(value: int):
 	
 	if health == 0:
 		globalState.gameOver()
+
+func sleep():
+	set_process(false)
+	setAim(Common.STRAIGHT)
+	movement = Common.STAY

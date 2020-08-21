@@ -14,6 +14,12 @@ func gameOver():
 
 	$AnimationPlayer.play("GameOver")
 
+func nextLevel():
+	if $AnimationPlayer.is_playing() and $AnimationPlayer.current_animation == "LevelComplete":
+		return
+
+	$AnimationPlayer.play("LevelComplete")
+
 func setHealth(value: int, maxValue: int):
 	$PlayerHealth.max_value = maxValue
 	$PlayerHealth.value = value

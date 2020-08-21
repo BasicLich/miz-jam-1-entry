@@ -4,9 +4,11 @@ onready var ui := $"/root/Game/UI" as UserInterface
 
 var currentLevel := 0
 var levels := {
-	0: preload("res://Level0.tscn")
+	0: preload("res://Levels/Level0.tscn"),
+	1: preload("res://Levels/Level1.tscn"),
 }
 var isGameOver := false
+var canProceedToNextLevel := false
 
 func gameOver():
 	if isGameOver:
@@ -26,3 +28,11 @@ func reset():
 	game.add_child(level)
 	ui.reset()
 	isGameOver = false
+	canProceedToNextLevel = false
+
+func completeLevel():
+	get_tree().call_group(Guy.TEAM, "takeDamage", 100000)
+	get_tree().call_group(Player.TEAM, "sleep")
+	currentLevel += 1
+	if levels.has(currentLevel):
+		ui.nextLevel()

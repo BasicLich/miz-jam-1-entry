@@ -4,9 +4,10 @@
 [ext_resource path="res://Player.gd" type="Script" id=2]
 [ext_resource path="res://Weapon.tscn" type="PackedScene" id=3]
 [ext_resource path="res://PersonShape.tres" type="Shape2D" id=4]
-[ext_resource path="res://AnimDeath2.tres" type="Animation" id=5]
-[ext_resource path="res://AnimDeath.tres" type="Animation" id=6]
-[ext_resource path="res://AnimWalk.tres" type="Animation" id=7]
+[ext_resource path="res://Anim/AnimDeath2.tres" type="Animation" id=5]
+[ext_resource path="res://Anim/AnimDeath.tres" type="Animation" id=6]
+[ext_resource path="res://Anim/AnimWalk.tres" type="Animation" id=7]
+
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 413.377, 195.998 )

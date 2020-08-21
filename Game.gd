@@ -9,3 +9,9 @@ func _ready():
 func _input(event: InputEvent):
 	if event.is_action_pressed("restart_level"):
 		globalState.reset()
+		
+	if event is InputEventKey and globalState.canProceedToNextLevel:
+		globalState.reset()
+
+func allowNextLevel():
+	globalState.canProceedToNextLevel = true
