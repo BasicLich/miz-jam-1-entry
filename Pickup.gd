@@ -11,14 +11,17 @@ func _ready():
 	
 	$AnimationPlayer.play("Idle")
 
+func _take():
+	$AnimationPlayer.play("Take")
+
 func _on_Pickup_body_entered(body):
 	if body is Player:
 		if type == Common.PickupType.HEALTH:
 			if body.heal(25):
-				queue_free()
+				_take()
 		elif type == Common.PickupType.SHOTGUN:
 			if body.addWeapon(Weapon.WeaponType.SHOTGUN):
-				queue_free()
+				_take()
 		elif type == Common.PickupType.SUBMACHINE_GUN:
 			if body.addWeapon(Weapon.WeaponType.SUBMACHINE_GUN):
-				queue_free()
+				_take()

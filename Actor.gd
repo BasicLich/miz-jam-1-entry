@@ -49,7 +49,7 @@ func _physics_process(delta):
 	if not isDead():
 		if movement != Common.STAY and not ap.is_playing():
 			ap.play("Walk")
-		elif movement == Common.STAY and ap.is_playing():
+		elif (movement == Common.STAY or not onFloor) and ap.is_playing():
 			ap.stop()
 
 	vel = vel + GRAVITY * delta
