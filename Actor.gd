@@ -15,9 +15,7 @@ var vel := Vector2(0, 0)
 var onFloor := false
 var movement := Common.STAY
 var weapons := [
-	Weapon.WeaponType.GUN,
-	Weapon.WeaponType.SHOTGUN,
-	Weapon.WeaponType.SUBMACHINE_GUN
+	Weapon.WeaponType.GUN
 ]
 
 onready var w := $Weapon as Weapon
@@ -114,3 +112,17 @@ func _runDeadAnimation():
 		set_collision_layer_bit(5, true)
 		set_collision_mask_bit(1, false)
 		set_collision_mask_bit(2, false)
+
+func heal(value: int) -> bool:
+	if health < maxHealth:
+		health = min(health + value, maxHealth)
+		return true
+	else:
+		return false
+
+func addWeapon(value) -> bool:
+	if weapons.find(value) != -1:
+		return false
+	else:
+		weapons.append(value)
+		return true

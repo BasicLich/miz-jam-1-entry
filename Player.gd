@@ -58,6 +58,11 @@ func takeDamage(value: int):
 	if health == 0:
 		globalState.gameOver()
 
+func heal(value: int) -> bool:
+	var result := .heal(value)
+	_updateHealth()
+	return result
+
 func sleep():
 	set_process(false)
 	setAim(Common.STRAIGHT)

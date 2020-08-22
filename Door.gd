@@ -18,10 +18,6 @@ func updateDoor():
 	if state == Common.ON and closed:
 		closed = false
 		ap.play("Open")
-		print_debug("Opening door")
 	elif not closed:
 		closed = true
 		ap.play_backwards("Open")
-		print_debug("Closing door")
-	else:
-		print_debug("Nothing with door")

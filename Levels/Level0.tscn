@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Switch.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Goal.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Pickup.tscn" type="PackedScene" id=9]
 
 [node name="Level" type="TileMap"]
 tile_set = ExtResource( 1 )
@@ -57,3 +58,14 @@ position = Vector2( 80, 0 )
 
 [node name="Goal" parent="." instance=ExtResource( 8 )]
 position = Vector2( 728, 88 )
+
+[node name="Pickup" parent="." instance=ExtResource( 9 )]
+position = Vector2( 696, 88 )
+
+[node name="Pickup2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 592, 24 )
+type = 1
+
+[node name="Pickup3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 608, 312 )
+type = 2
