@@ -6,7 +6,8 @@ func _ready():
 	reset()
 
 func reset():
-	$AnimationPlayer.play("Reset")
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play("LevelTitleCard")
 
 func gameOver():
 	if $AnimationPlayer.is_playing() and $AnimationPlayer.current_animation == "GameOver":
@@ -23,3 +24,6 @@ func nextLevel():
 func setHealth(value: int, maxValue: int):
 	$PlayerHealth.max_value = maxValue
 	$PlayerHealth.value = value
+
+func setLevelName(value: String):
+	$LevelName.text = value

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://UserInterface.gd" type="Script" id=2]
@@ -46,6 +46,56 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "LevelTitleCard"
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("LevelName:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1054.87, -0.25, 0, 0.11, -189.196, 204.536, -1.07, 45.7434, 0.11, -34.7222 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LevelName:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LevelComplete:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 420.134, -48.8799 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("GameOver:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 452.577, 627.43 ) ]
+}
+
 [sub_resource type="Animation" id=3]
 length = 0.1
 tracks/0/type = "value"
@@ -79,9 +129,11 @@ script = ExtResource( 1 )
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="UI"]
-margin_right = 40.0
-margin_bottom = 14.0
+[node name="LevelName" type="Label" parent="UI"]
+margin_left = 1054.87
+margin_top = 436.396
+margin_right = 1230.87
+margin_bottom = 471.396
 custom_fonts/font = ExtResource( 3 )
 text = "Shooty game
 "
@@ -116,13 +168,14 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI"]
 anims/GameOver = SubResource( 1 )
 anims/LevelComplete = SubResource( 2 )
+anims/LevelTitleCard = SubResource( 4 )
 anims/Reset = SubResource( 3 )
 
 [node name="LevelComplete" type="Label" parent="UI"]
 margin_left = 420.134
-margin_top = 161.57
+margin_top = -48.8799
 margin_right = 884.134
-margin_bottom = 196.57
+margin_bottom = -13.8799
 custom_fonts/font = ExtResource( 3 )
 text = "Level Complete!
 Press any key for next level!"

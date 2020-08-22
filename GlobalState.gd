@@ -2,11 +2,23 @@ extends Node
 
 onready var ui := $"/root/Game/UI" as UserInterface
 
-var currentLevel := 0
+var currentLevel := 3
 var levels := {
 	0: preload("res://Levels/Level0.tscn"),
 	1: preload("res://Levels/Level1.tscn"),
+	2: preload("res://Levels/Level2.tscn"),
+	3: preload("res://Levels/Level3.tscn"),
+	4: preload("res://Levels/Level4.tscn")
 }
+
+var levelNames := {
+	0: "Starting area",
+	1: "Temple of torment",
+	2: "Chthonian caves",
+	3: "Gauntlet",
+	4: "***"
+}
+
 var isGameOver := false
 var canProceedToNextLevel := false
 
@@ -18,6 +30,9 @@ func gameOver():
 	ui.gameOver()
 
 func reset():
+	if not levels.has(currentLevel):
+		return
+
 	var game := get_tree().root.get_node("Game")
 	for child in game.get_children():
 		if child is TileMap:
@@ -26,6 +41,7 @@ func reset():
 
 	var level = levels[currentLevel].instance()
 	game.add_child(level)
+	ui.setLevelName(levelNames[currentLevel])
 	ui.reset()
 	isGameOver = false
 	canProceedToNextLevel = false
