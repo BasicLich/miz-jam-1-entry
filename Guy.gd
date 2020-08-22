@@ -6,6 +6,7 @@ const TEAM := "Guy"
 const TEAM_PROJECTILE := TEAM + "Projectile"
 const SOCIAL_DISTANCE := 30.0
 const NOT_INTERESTED := 800.0
+const NEW_INTEREST := 1.0
 
 var rnd = RandomNumberGenerator.new()
 var target: Node2D
@@ -30,19 +31,19 @@ func _process(delta):
 	if isDead():
 		return
 
-	if target == null:
+	var targetVisible := _targetVisible()
+	if targetVisible:
+		interest = NEW_INTEREST
+		lastSeen = target.position
+		#update()
+
+	if target == null or interest < 0:
 		movement = Common.STAY
 	else:
 		if target.position.distance_to(position) > NOT_INTERESTED:
-			print_debug(name +  ": target lost.")
 			target = null
 			return
 
-		var targetVisible := _targetVisible()
-		if targetVisible:
-			lastSeen = target.position
-			#update()
-		
 		var whereToGo := lastSeen
 		if targetVisible:
 			whereToGo = target.position
@@ -77,9 +78,6 @@ func _process(delta):
 			
 		if rnd.randi_range(0, 1000) < 10:
 			jump()
-		
-		if interest < 0:
-			target = null
 
 func _targetVisible() -> bool:
 	if target != null:
@@ -91,5 +89,5 @@ func _targetVisible() -> bool:
 
 func _on_DetectionArea_body_entered(body: Node2D):
 	if body.is_in_group(Player.TEAM):
-		interest = 5.0
+		interest = NEW_INTEREST
 		target = body
