@@ -8,11 +8,10 @@
 [ext_resource path="res://Anim/AnimDeath.tres" type="Animation" id=6]
 [ext_resource path="res://Anim/AnimWalk.tres" type="Animation" id=7]
 
-
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 413.377, 195.998 )
 collision_layer = 4
-collision_mask = 7
+collision_mask = 5
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

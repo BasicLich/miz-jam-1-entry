@@ -18,7 +18,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1.5 )
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "LevelComplete"
 length = 1.5
 tracks/0/type = "bezier"
@@ -46,8 +46,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Reset"
+[sub_resource type="Animation" id=3]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("GameOver:rect_position")
@@ -116,8 +115,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI"]
 anims/GameOver = SubResource( 1 )
-anims/LevelComplete = SubResource( 3 )
-anims/Reset = SubResource( 2 )
+anims/LevelComplete = SubResource( 2 )
+anims/Reset = SubResource( 3 )
 
 [node name="LevelComplete" type="Label" parent="UI"]
 margin_left = 420.134
