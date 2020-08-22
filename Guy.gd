@@ -9,11 +9,17 @@ const NOT_INTERESTED := 800.0
 
 var rnd = RandomNumberGenerator.new()
 var target: Node2D
+var lastSeen: Vector2
+var lastDistance: float
+var interest: float
 
 func _ready():
 	rnd.randomize()
 	setInitialHealth(80)
 	set_process(true)
+
+#func _draw():
+#	draw_circle(lastSeen - position, 2, Color(0, 120, 120))
 
 func _enter_tree():
 	add_to_group(TEAM)
@@ -33,10 +39,23 @@ func _process(delta):
 			return
 
 		var targetVisible := _targetVisible()
-		if targetVisible and target.position.distance_to(position) > SOCIAL_DISTANCE:
-			if target.position.x > position.x:
+		if targetVisible:
+			lastSeen = target.position
+			#update()
+		
+		var whereToGo := lastSeen
+		if targetVisible:
+			whereToGo = target.position
+
+		if whereToGo and whereToGo.distance_to(position) > SOCIAL_DISTANCE:
+			if abs(lastDistance - whereToGo.distance_to(position)) <= 0.01:
+				interest = interest - delta
+			lastDistance = whereToGo.distance_to(position)
+			if abs(whereToGo.x - position.x) <= 3:
+				movement = Common.STAY
+			elif whereToGo.x > position.x:
 				movement = Common.RIGHT
-			if target.position.x < position.x:
+			elif whereToGo.x < position.x:
 				movement = Common.LEFT
 		else:
 			movement = Common.STAY
@@ -58,6 +77,9 @@ func _process(delta):
 			
 		if rnd.randi_range(0, 1000) < 10:
 			jump()
+		
+		if interest < 0:
+			target = null
 
 func _targetVisible() -> bool:
 	if target != null:
@@ -69,4 +91,5 @@ func _targetVisible() -> bool:
 
 func _on_DetectionArea_body_entered(body: Node2D):
 	if body.is_in_group(Player.TEAM):
+		interest = 5.0
 		target = body
