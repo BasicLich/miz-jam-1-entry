@@ -150,5 +150,5 @@ restart_level={
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_clear_color=Color( 0.278431, 0.176471, 0.235294, 1 )
+environment/default_clear_color=Color( 0.160784, 0.0980392, 0.12549, 1 )
 environment/default_environment="res://default_env.tres"
