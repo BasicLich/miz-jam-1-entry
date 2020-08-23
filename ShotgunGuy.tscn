@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Guy.gd" type="Script" id=1]
 [ext_resource path="res://Weapon.tscn" type="PackedScene" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://Anim/AnimDeath.tres" type="Animation" id=5]
 [ext_resource path="res://Anim/AnimWalk.tres" type="Animation" id=6]
 [ext_resource path="res://Anim/AnimDeath2.tres" type="Animation" id=7]
+[ext_resource path="res://Sfx/HOSMDETH.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Sfx/THUFDETH.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Sfx/FRATDETH.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Sfx/SORODETH.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Sfx/THUGDETH.ogg" type="AudioStream" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 158.338, 59.3344 )
@@ -37,4 +42,19 @@ type = 1
 anims/Death = ExtResource( 5 )
 anims/Death2 = ExtResource( 7 )
 anims/Walk = ExtResource( 6 )
+
+[node name="DeathSound1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+
+[node name="DeathSound2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+
+[node name="DeathSound3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+
+[node name="DeathSound4" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+
+[node name="DeathSound5" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_DetectionArea_body_entered"]

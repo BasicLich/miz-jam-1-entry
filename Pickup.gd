@@ -18,10 +18,13 @@ func _on_Pickup_body_entered(body):
 	if body is Player:
 		if type == Common.PickupType.HEALTH:
 			if body.heal(25):
+				$Sound.play()
 				_take()
 		elif type == Common.PickupType.SHOTGUN:
 			if body.addWeapon(Weapon.WeaponType.SHOTGUN):
+				$Sound.play()
 				_take()
 		elif type == Common.PickupType.SUBMACHINE_GUN:
 			if body.addWeapon(Weapon.WeaponType.SUBMACHINE_GUN):
+				$Sound.play()
 				_take()

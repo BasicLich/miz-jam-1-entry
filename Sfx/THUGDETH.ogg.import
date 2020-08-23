@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/THUGDETH.ogg-5bae785446e46b4651f9a4c034921b32.oggstr"
+
+[deps]
+
+source_file="res://Sfx/THUGDETH.ogg"
+dest_files=[ "res://.import/THUGDETH.ogg-5bae785446e46b4651f9a4c034921b32.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

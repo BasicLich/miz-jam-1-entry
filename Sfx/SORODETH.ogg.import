@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SORODETH.ogg-80bf25a873d60fe35cdd42ded25b6108.oggstr"
+
+[deps]
+
+source_file="res://Sfx/SORODETH.ogg"
+dest_files=[ "res://.import/SORODETH.ogg-80bf25a873d60fe35cdd42ded25b6108.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

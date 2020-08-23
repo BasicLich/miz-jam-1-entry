@@ -2,7 +2,7 @@ extends Node
 
 onready var ui := $"/root/Game/UI" as UserInterface
 
-var currentLevel := 0
+var currentLevel := 2
 var levels := {
 	0: preload("res://Levels/Level0.tscn"),
 	1: preload("res://Levels/Level1.tscn"),
@@ -23,6 +23,9 @@ var levelNames := {
 
 var isGameOver := false
 var canProceedToNextLevel := false
+
+func _ready():
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -17)
 
 func gameOver():
 	if isGameOver:
@@ -49,6 +52,7 @@ func reset():
 	canProceedToNextLevel = false
 
 func completeLevel():
+	ui.get_node("Sound").play()
 	get_tree().call_group(Guy.TEAM, "takeDamage", 100000)
 	get_tree().call_group(Player.TEAM, "sleep")
 	currentLevel += 1

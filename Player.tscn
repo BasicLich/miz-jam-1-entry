@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Art/monochrome_transparent.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Anim/AnimDeath2.tres" type="Animation" id=5]
 [ext_resource path="res://Anim/AnimDeath.tres" type="Animation" id=6]
 [ext_resource path="res://Anim/AnimWalk.tres" type="Animation" id=7]
+[ext_resource path="res://Sfx/HOSMDETH.ogg" type="AudioStream" id=8]
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 413.377, 195.998 )
@@ -33,3 +34,6 @@ shape = ExtResource( 4 )
 anims/Death = ExtResource( 6 )
 anims/Death2 = ExtResource( 5 )
 anims/Walk = ExtResource( 7 )
+
+[node name="DeathSound1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )

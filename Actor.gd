@@ -27,6 +27,8 @@ onready var ap := $AnimationPlayer as AnimationPlayer
 
 var rng = RandomNumberGenerator.new()
 
+var deathSounds = 1
+
 func _ready():
 	rng.randomize()
 	set_physics_process(true)
@@ -108,6 +110,15 @@ func isDead() -> bool:
 	
 func _runDeadAnimation():
 	if deadAnimationNeeded:
+		var deathSound: AudioStreamPlayer2D
+		if deathSounds == 1:
+			deathSound = get_node("DeathSound" + var2str(1))
+		else:
+			var i = rng.randi_range(1, deathSounds)
+			deathSound = get_node("DeathSound" + var2str(i))
+			assert(deathSound != null)
+		deathSound.play()
+
 		deadAnimationNeeded = false
 		onFloor = false
 		vel = Vector2(rng.randf_range(-3, 3) * 25, -150)

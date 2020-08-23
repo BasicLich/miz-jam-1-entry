@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/FRATDETH.ogg-12e4871775ce5ca6793b458ac34c32f5.oggstr"
+
+[deps]
+
+source_file="res://Sfx/FRATDETH.ogg"
+dest_files=[ "res://.import/FRATDETH.ogg-12e4871775ce5ca6793b458ac34c32f5.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

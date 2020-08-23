@@ -20,6 +20,7 @@ func _ready():
 	rnd.randomize()
 	setInitialHealth(80)
 	set_process(true)
+	deathSounds = 5
 
 #func _draw():
 #	draw_circle(lastSeen - position, 2, Color(0, 120, 120))

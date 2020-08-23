@@ -88,8 +88,10 @@ func shoot(team: String):
 			var spread := 0.0
 			if type == WeaponType.GUN:
 				spread = rnd.randf_range(-2, 2)
+				$PistolSound.play()
 			elif type == WeaponType.SUBMACHINE_GUN:
 				spread = rnd.randf_range(-7, 7)
+				$SMGSound.play()
 			var projectile := projectileClass.instance() as Projectile
 			projectile.team = team
 			if type == WeaponType.GUN:
@@ -103,6 +105,7 @@ func shoot(team: String):
 			get_tree().root.add_child(projectile)
 			
 		elif type == WeaponType.SHOTGUN:
+			$ShotgunSound.play()
 			for i in range(1, 5):
 				var spread := rnd.randf_range(-SHOTGUN_SPREAD, SHOTGUN_SPREAD)
 				var projectile := projectileClass.instance() as Projectile
