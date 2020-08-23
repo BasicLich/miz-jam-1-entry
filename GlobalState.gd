@@ -2,7 +2,7 @@ extends Node
 
 onready var ui := $"/root/Game/UI" as UserInterface
 
-var currentLevel := 5
+var currentLevel := 4
 var levels := {
 	0: preload("res://Levels/Level0.tscn"),
 	1: preload("res://Levels/Level1.tscn"),
@@ -17,7 +17,7 @@ var levelNames := {
 	1: "Temple of torment",
 	2: "Chthonian caves",
 	3: "Gauntlet",
-	4: "***",
+	4: "Storage facility",
 	5: ""
 }
 

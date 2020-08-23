@@ -3,6 +3,9 @@ extends KinematicBody2D
 class_name Actor
 
 const GRAVITY := Vector2(0, 350)
+const HURT_COLOR := Color.red
+const NORMAL_COLOR := Color.white
+var color := NORMAL_COLOR
 
 var moveSpeed := 1.0
 var initialJumpVel := 1.0
@@ -10,6 +13,7 @@ var initialJumpVel := 1.0
 var maxHealth := 100
 var health := 100
 var deadAnimationNeeded = true
+var hurtAnim := 0.0
 
 var vel := Vector2(0, 0)
 var onFloor := false
@@ -28,6 +32,12 @@ func _ready():
 	set_physics_process(true)
 
 func _physics_process(delta):
+	if hurtAnim > 0:
+		hurtAnim = max(0, hurtAnim - delta * 5)
+		color.r = lerp(NORMAL_COLOR.r, HURT_COLOR.r, hurtAnim)
+		color.g = lerp(NORMAL_COLOR.g, HURT_COLOR.g, hurtAnim)
+		color.b = lerp(NORMAL_COLOR.b, HURT_COLOR.b, hurtAnim)
+
 	var moveControl := 1.0
 	if onFloor:
 		vel.y = 0
@@ -91,6 +101,7 @@ func setInitialHealth(value: int):
 
 func takeDamage(value: int):
 	health = max(0, health - value)
+	hurtAnim = 1.0
 	
 func isDead() -> bool:
 	return health == 0

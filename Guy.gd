@@ -14,6 +14,8 @@ var lastSeen: Vector2
 var lastDistance: float
 var interest: float
 
+onready var sprite := $Sprite as Sprite
+
 func _ready():
 	rnd.randomize()
 	setInitialHealth(80)
@@ -28,6 +30,8 @@ func _enter_tree():
 	initialJumpVel = 50.0
 
 func _process(delta):
+	sprite.modulate = color
+
 	if isDead():
 		return
 

@@ -7,6 +7,7 @@ const TEAM_PROJECTILE := TEAM + "Projectile"
 
 onready var globalState = $"/root/GlobalState"
 onready var ui := $"/root/Game/UI" as UserInterface
+onready var sprite := $Sprite as Sprite
 
 func _ready():
 	set_process(true)
@@ -19,6 +20,8 @@ func _enter_tree():
 	initialJumpVel = 200.0
 
 func _process(delta):
+	sprite.modulate = color
+
 	if isDead():
 		return
 

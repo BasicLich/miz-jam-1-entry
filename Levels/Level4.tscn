@@ -72,7 +72,7 @@ position = Vector2( 368, 120 )
 position = Vector2( 104, 120 )
 
 [node name="Guy6" parent="." instance=ExtResource( 5 )]
-position = Vector2( 416, 121 )
+position = Vector2( 416, 120 )
 
 [node name="Guy7" parent="." instance=ExtResource( 3 )]
 position = Vector2( 120, 120 )
@@ -108,7 +108,7 @@ position = Vector2( 392, 120 )
 position = Vector2( 184, 120 )
 
 [node name="Guy14" parent="." instance=ExtResource( 4 )]
-position = Vector2( 256, 130 )
+position = Vector2( 256, 120 )
 
 [node name="Guy15" parent="." instance=ExtResource( 4 )]
 position = Vector2( 320, 120 )
