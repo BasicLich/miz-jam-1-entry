@@ -18,6 +18,8 @@ func updateDoor():
 	if state == Common.ON and closed:
 		closed = false
 		ap.play("Open")
+		$Sound.play()
 	elif not closed:
 		closed = true
 		ap.play_backwards("Open")
+		$Sound.play()

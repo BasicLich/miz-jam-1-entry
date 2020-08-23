@@ -20,4 +20,5 @@ func toggle():
 		state = Common.OFF
 	else:
 		state = Common.ON
+	$Sound.play()
 	_update()
