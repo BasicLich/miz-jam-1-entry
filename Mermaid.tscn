@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Art/monochrome_transparent.png" type="Texture" id=1]
+[ext_resource path="res://Art/heart.png" type="Texture" id=2]
+[ext_resource path="res://Mermaid.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "MermaidIdle"
+length = 20.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Sprite:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -5.46582, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 11, 20 )
+}
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends AnimationPlayer
+
+"
+
+[node name="Mermaid" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.827451, 0.776471, 0.776471, 1 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 527, 153, 16, 16 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( -5.66964, -4.53522 )
+amount = 6
+lifetime = 6.0
+randomness = 0.17
+lifetime_randomness = 1.0
+texture = ExtResource( 2 )
+spread = 32.59
+gravity = Vector2( 0, -7 )
+initial_velocity = 0.37
+initial_velocity_random = 0.07
+angular_velocity = 19.86
+angular_velocity_random = 0.16
+angle_random = 1.0
+scale_amount = 0.2
+color = Color( 0.776471, 0.0313726, 0.0313726, 1 )
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2( 6.29961, -5.48016 )
+amount = 6
+lifetime = 6.0
+randomness = 0.18
+lifetime_randomness = 1.0
+texture = ExtResource( 2 )
+spread = 32.59
+gravity = Vector2( 0, -7 )
+initial_velocity = 0.37
+initial_velocity_random = 0.07
+angular_velocity = 19.86
+angular_velocity_random = 0.16
+angle_random = 1.0
+scale_amount = 0.2
+color = Color( 0.776471, 0.0313726, 0.0313726, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/MermaidIdle = SubResource( 1 )
+script = SubResource( 2 )

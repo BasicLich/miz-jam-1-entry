@@ -76,7 +76,7 @@ func _findWeapon(current, d: int):
 	if i > weapons.size() - 1:
 		i = 0
 	elif i < 0:
-		i = weapons.back()
+		i = weapons.size() - 1
 	return weapons[i]
 
 func nextWeapon():

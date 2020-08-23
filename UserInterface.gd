@@ -14,6 +14,12 @@ func gameOver():
 		return
 
 	$AnimationPlayer.play("GameOver")
+	
+func gameComplete():
+	if $AnimationPlayer.is_playing() and $AnimationPlayer.current_animation == "GameComplete":
+		return
+
+	$AnimationPlayer.play("GameComplete")
 
 func nextLevel():
 	if $AnimationPlayer.is_playing() and $AnimationPlayer.current_animation == "LevelComplete":

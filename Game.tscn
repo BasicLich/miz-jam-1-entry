@@ -1,8 +1,24 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://UserInterface.gd" type="Script" id=2]
 [ext_resource path="res://PressStart2PFont.tres" type="DynamicFont" id=3]
+
+[sub_resource type="Animation" id=5]
+resource_name = "GameComplete"
+length = 12.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("GameComplete:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.8, 12 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 452.577, 627.43 ), Vector2( 452.577, 627.43 ), Vector2( 452.577, 329.166 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "GameOver"
@@ -46,7 +62,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "LevelTitleCard"
 length = 5.0
 tracks/0/type = "bezier"
@@ -95,8 +111,20 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector2( 452.577, 627.43 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("GameComplete:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 452.577, 627.43 ) ]
+}
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("GameOver:rect_position")
@@ -121,6 +149,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 420.134, -48.8799 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GameComplete:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 452.577, 627.43 ) ]
 }
 
 [node name="Game" type="Node"]
@@ -165,11 +205,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="GameComplete" type="Label" parent="UI"]
+margin_left = 452.577
+margin_top = 627.43
+margin_right = 820.577
+margin_bottom = 681.43
+custom_fonts/font = ExtResource( 3 )
+text = "The End?
+
+Press F1 to start over!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI"]
+anims/GameComplete = SubResource( 5 )
 anims/GameOver = SubResource( 1 )
 anims/LevelComplete = SubResource( 2 )
-anims/LevelTitleCard = SubResource( 4 )
-anims/Reset = SubResource( 3 )
+anims/LevelTitleCard = SubResource( 3 )
+anims/Reset = SubResource( 4 )
 
 [node name="LevelComplete" type="Label" parent="UI"]
 margin_left = 420.134

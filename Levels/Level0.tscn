@@ -117,10 +117,10 @@ __meta__ = {
 [node name="Tut6" type="Label" parent="."]
 margin_left = 2000.0
 margin_top = 512.0
-margin_right = 2352.0
+margin_right = 2208.0
 margin_bottom = 547.0
 custom_fonts/font = ExtResource( 4 )
-text = "[/] -> Change"
+text = "A/S -> Change"
 __meta__ = {
 "_edit_use_anchors_": false
 }
